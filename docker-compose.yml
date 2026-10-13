@@ -1,0 +1,24 @@
+services:
+  nord-shop-api:
+    container_name: nord-shop-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    init: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5003
+      ConnectionStrings__ShopDb: "Host=messenger-postgres;Port=5432;Database=${POSTGRES_DB:?Set POSTGRES_DB in .env};Username=${POSTGRES_USER:?Set POSTGRES_USER in .env};Password=${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}"
+      Jwt__Key: "${JWT_KEY:?Set JWT_KEY in .env}"
+    ports:
+      - "127.0.0.1:5003:5003"
+    networks:
+      - postgres-network
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  postgres-network:
+    external: true
+    name: ${POSTGRES_NETWORK:?Set POSTGRES_NETWORK in .env}

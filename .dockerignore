@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+.env
+.git/
+database/
+deploy/
+README.md
+docker-compose.yml
+.env.example

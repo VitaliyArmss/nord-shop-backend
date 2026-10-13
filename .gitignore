@@ -1,0 +1,38 @@
+﻿# .NET build artifacts
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.example.*
+appsettings.Local.json
+appsettings.Production.json
+secrets.json
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+
+# Database dumps and backups
+*.dump
+*.sql
+*.bak
+*.backup
+
+# Local IDE files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Deployment files excluded by request
+deploy/
